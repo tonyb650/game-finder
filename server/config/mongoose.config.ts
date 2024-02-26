@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-const DBNAME = "gamefinder";
+const DBNAME: string = "gamefinder";
 
 async function connect() {
     try {

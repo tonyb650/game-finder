@@ -19,12 +19,26 @@ export function createLocation (req: express.Request, res: express.Response, nex
     .catch((err) => res.status(400).json(err));
 }
 
-// export function getOneLocation (req: any, res: any) { 
-//   res.send('return a single location here')
-// } 
+export function updateLocation (req: express.Request, res: express.Response, next: express.NextFunction) {
+  LocationModel.findOneAndUpdate({ _id: req.params.id }, req.body, 
+    {
+    new: true,
+    runValidators: true,
+  }
+  )
+    .then((updatedLocation) => res.json(updatedLocation))
+    .catch((err) => res.status(400).json(err));
+}
+
+export function deleteLocation (req: express.Request, res: express.Response, next: express.NextFunction) {
+  LocationModel.findOneAndDelete({ _id: req.params.id })
+    .then((response) => res.json(response))
+    .catch((err) => console.log(err));
+}
+
 
 /*
-
+ORIGINAL JAVASCRIPT CODE:
 module.exports = {
   getAllLocations: (req, res) => {
     Location.find({})

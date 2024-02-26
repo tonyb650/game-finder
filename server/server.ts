@@ -1,6 +1,8 @@
 import express from 'express'
 import locationRouter from './routes/location.routes'
 import messageRouter from './routes/message.routes'
+import userRouter from './routes/user.routes'
+import eventRouter from './routes/event.routes'
 
 // const cors = require("cors");
 // const cookieParser = require("cookie-parser");
@@ -22,5 +24,7 @@ require("./config/mongoose.config");
 
 app.use(locationRouter)
 app.use(messageRouter)
+app.use(userRouter)
+app.use(eventRouter)
 
 app.listen(port, ()=> console.log(`Express is listening on port: ${port}`))

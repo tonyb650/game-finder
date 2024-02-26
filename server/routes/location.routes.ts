@@ -6,6 +6,8 @@ const locationRouter = Router()
 locationRouter.get('/api/locations', LocationController.getAllLocations)
 locationRouter.get('/api/locations/:id', LocationController.getLocationById)
 locationRouter.post('/api/locations', LocationController.createLocation)
+locationRouter.patch('/api/locations/:id', LocationController.updateLocation)
+locationRouter.delete('/api/locations/:id', LocationController.deleteLocation)
 
 export default locationRouter;
 
