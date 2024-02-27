@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 
 export interface ILocation {
+  _id: string;
   locationName: string;
   address: string;
   city: string;
