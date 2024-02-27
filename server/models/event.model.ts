@@ -1,13 +1,14 @@
 import mongoose from "mongoose";
 
 export interface IEvent {
+  _id: string;
   eventTitle: string;
   eventDate: mongoose.Schema.Types.Date;
   eventDetails?: string;
   maxPlayers: number;
   location: mongoose.Schema.Types.ObjectId;
   creator: mongoose.Schema.Types.ObjectId;
-  players?: mongoose.Schema.Types.ObjectId[];
+  players: mongoose.Schema.Types.ObjectId[];
 }
 
 const EventSchema = new mongoose.Schema<IEvent>(

@@ -2,13 +2,14 @@ import mongoose from 'mongoose'
 import bcrypt from 'bcrypt'
 
 export interface IUser {
+  _id: string;
   firstName: string;
   lastName: string;
   birthday?: mongoose.Schema.Types.Date;
   photoURL?: string;
-  checkedMessagesDate?: mongoose.Schema.Types.Date;
   email: string;
   password: string;
+  _confirmPassword: string;
   events?: mongoose.Schema.Types.ObjectId[];
 }
 
@@ -24,9 +25,6 @@ const UserSchema = new mongoose.Schema<IUser>({
     birthday: {
       type: String,
       required: [true, "Birthday is required"]
-    },
-    checkedMessagesDate: {
-      type: Date
     },
     photoURL: {
       type: String
@@ -46,26 +44,28 @@ const UserSchema = new mongoose.Schema<IUser>({
     }, 
     events: [{ type: mongoose.Schema.Types.ObjectId, ref: "Event"
     }]
-  }, {timestamps: true});
+  }, {
+    timestamps: true
+  });
   
 
+/* Mongoose virtual for 'confirmPassword' field */
 UserSchema.virtual('confirmPassword')
-.get( function ( this: {_confirmPassword: string}) { return this._confirmPassword}) 
-.set( function (_confirmPassword:string) { this.set(_confirmPassword)} );
+.get( function () { return this._confirmPassword})  // getter
+.set( function (value: string) { this._confirmPassword = value } ) // setter
 
-// UserSchema.pre('validate', function(next) {
-//   const confirm: string = UserSchema.virtual('confirmPassword')
-//   .get( function ( this: {_confirmPassword: string}) { return this._confirmPassword}) 
-//   if (this.password !== confirm) {
-//     this.invalidate('confirmPassword', 'Password must match confirm password');
-//   }
-//   next();
-// });
+/* Before saving, validate by comparing 'password' to 'confirmPassword */
+UserSchema.pre('validate', function(next) {
+  if (this.password !== this._confirmPassword) {
+    this.invalidate('confirmPassword', 'Password must match confirm password');
+  }
+  next();
+})
 
+/* Before saving, convert 'password' to hash with bcrypt */
 UserSchema.pre('save', function(next) {
   bcrypt.hash(this.password, 10) // bcrypt.hash returns a promise. 10 salt 'rounds'
     .then((hash: string) => { 
-      console.log("hash" + hash)
       this.password = hash;
       next();
     }); 
