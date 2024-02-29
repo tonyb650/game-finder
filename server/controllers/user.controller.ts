@@ -6,10 +6,10 @@ import dotenv from 'dotenv'
 
 dotenv.config() // loads any environmental variables that we have
 
-// TODO const ACCESS_TOKEN_SECRET = process.env.ACCESS_TOKEN_SECRET // For production/deployment
-// TODO const REFRESH_TOKEN_SECRET = process.env.REFRESH_TOKEN_SECRET // For production/deployment
-const REFRESH_TOKEN_SECRET = "secret_key" // For development
-const ACCESS_TOKEN_SECRET = "secret_key" // For development
+const ACCESS_TOKEN_SECRET = process.env.ACCESS_TOKEN_SECRET as string // For production/deployment
+const REFRESH_TOKEN_SECRET = process.env.REFRESH_TOKEN_SECRET as string // For production/deployment
+// const REFRESH_TOKEN_SECRET = "secret_key" // For development
+// const ACCESS_TOKEN_SECRET = "secret_key" // For development
 const ACCESS_TOKEN_DURATION = '15m'
 const REFRESH_TOKEN_DURATION = '7d'
 const REFRESH_COOKIE_MAXAGE = 30*12*60*60*1000

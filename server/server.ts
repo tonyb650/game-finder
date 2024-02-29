@@ -1,4 +1,5 @@
 import express from 'express'
+import http from 'http'
 import locationRouter from './routes/location.routes'
 import messageRouter from './routes/message.routes'
 import userRouter from './routes/user.routes'
@@ -10,7 +11,7 @@ import notificationRouter from './routes/notification.routes'
 dotenv.config() // loads any environmental variables that we have
 
 const app = express()
-const port: number = 8000
+const port: number = 8000 // Express port
 
 app.use(express.json());
 app.use(express.urlencoded({extended:true})); // has to do with bodyParser

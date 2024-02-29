@@ -4,10 +4,10 @@ import dotenv from 'dotenv'
 
 dotenv.config() // loads any environmental variables that we have
 
-// TODO const ACCESS_TOKEN_SECRET = process.env.ACCESS_TOKEN_SECRET // For production/deployment
-// TODO const REFRESH_TOKEN_SECRET = process.env.REFRESH_TOKEN_SECRET // For production/deployment
-const REFRESH_TOKEN_SECRET = "secret_key"; // For development
-const ACCESS_TOKEN_SECRET = "secret_key"; // For development
+const ACCESS_TOKEN_SECRET = process.env.ACCESS_TOKEN_SECRET as string // For production/deployment
+const REFRESH_TOKEN_SECRET = process.env.REFRESH_TOKEN_SECRET as string // For production/deployment
+// const REFRESH_TOKEN_SECRET = "secret_key"; // For development
+// const ACCESS_TOKEN_SECRET = "secret_key"; // For development
 
 interface UserPayload {
   _id: string
