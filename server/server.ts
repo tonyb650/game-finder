@@ -15,7 +15,8 @@ const port: number = 8000 // Express port
 
 app.use(express.json());
 app.use(express.urlencoded({extended:true})); // has to do with bodyParser
-app.use(cors({credentials: true, origin: 'http://localhost:5173'}));
+// app.use(cors({credentials: true, origin: 'http://localhost:5173'}));
+app.use(cors({credentials: true, origin: 'https://game-finder-yme6.onrender.com'}));
 app.use(cookieParser());
 
 require("./config/mongoose.config"); // start database connection here
