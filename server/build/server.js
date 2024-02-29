@@ -18,7 +18,8 @@ const port = 8000; // Express port
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true })); // has to do with bodyParser
 // app.use(cors({credentials: true, origin: 'http://localhost:5173'}));
-app.use((0, cors_1.default)({ credentials: true, origin: 'https://game-finder-yme6.onrender.com' }));
+app.use((0, cors_1.default)({ credentials: true, origin: ['https://game-finder-yme6.onrender.com', 'http://game-finder-yme6.onrender.com', 'http://localhost:8000', 'http://localhost:5173'] }));
+// app.use(cors({ origin: ['http://localhost:3000', 'http://gamebrag.onrender.com', 'https://gamebrag.onrender.com'], credentials: true }))
 app.use((0, cookie_parser_1.default)());
 require("./config/mongoose.config"); // start database connection here
 app.use(location_routes_1.default);
