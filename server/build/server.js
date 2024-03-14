@@ -22,6 +22,9 @@ app.use((0, cors_1.default)({ credentials: true, origin: ['https://game-finder-y
 // app.use(cors({ origin: ['http://localhost:3000', 'http://gamebrag.onrender.com', 'https://gamebrag.onrender.com'], credentials: true }))
 app.use((0, cookie_parser_1.default)());
 require("./config/mongoose.config"); // start database connection here
+/** Healthcheck */
+app.get('/ping', (req, res, next) => res.status(200).json({ message: 'pong' }));
+/** API routes */
 app.use(location_routes_1.default);
 app.use(message_routes_1.default);
 app.use(user_routes_1.default);

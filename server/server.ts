@@ -22,6 +22,10 @@ app.use(cookieParser());
 
 require("./config/mongoose.config"); // start database connection here
 
+/** Healthcheck */
+app.get('/ping', (req, res, next) => res.status(200).json({ message: 'pong'}))
+
+/** API routes */
 app.use(locationRouter)
 app.use(messageRouter)
 app.use(userRouter)
