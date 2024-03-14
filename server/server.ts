@@ -16,7 +16,7 @@ const port: number = 8000 // Express port
 app.use(express.json());
 app.use(express.urlencoded({extended:true})); // has to do with bodyParser
 // app.use(cors({credentials: true, origin: 'http://localhost:5173'}));
-app.use(cors({credentials: true, origin: ['https://game-finder-yme6.onrender.com', 'http://game-finder-yme6.onrender.com', 'http://localhost:8000','http://localhost:5173' ]}));
+app.use(cors({credentials: true, allowedHeaders: ['Content-Type', 'Authorization'], origin: ['https://game-finder-yme6.onrender.com', 'http://game-finder-yme6.onrender.com', 'http://localhost:5173' ]}));
 // app.use(cors({ origin: ['http://localhost:3000', 'http://gamebrag.onrender.com', 'https://gamebrag.onrender.com'], credentials: true }))
 app.use(cookieParser());
 
