@@ -10,15 +10,22 @@ import cookieParser from 'cookie-parser'
 import notificationRouter from './routes/notification.routes'
 dotenv.config() // loads any environmental variables that we have
 
+const origins = [
+  'http://localhost:5173', 
+  'https://game-finder-front-end.onrender.com/', 
+  'http://game-finder-front-end.onrender.com/', 
+  'https://gamefinder.pro/', 
+  'http://gamefinder.pro/',
+  'https://www.gamefinder.pro/', 
+  'http://www.gamefinder.pro/'
+]
+
 const app = express()
 const port: number = 8000 // Express port
 
 app.use(express.json());
 app.use(express.urlencoded({extended:true})); // has to do with bodyParser
-// app.use(cors({credentials: true, origin: 'http://localhost:5173'}));
-//app.use(cors({credentials: true, allowedHeaders: ['Content-Type', 'Authorization'], origin: ['https://game-finder-yme6.onrender.com', 'http://game-finder-yme6.onrender.com', 'http://localhost:5173' ]}));
-app.use(cors({ origin: ['http://localhost:5173', 'https://game-finder-front-end.onrender.com/', 'http://game-finder-front-end.onrender.com/', 'https://gamefinder.pro/', 'http://gamefinder.pro/'],allowedHeaders: ['Content-Type', 'Authorization'], credentials: true }))
-// app.use(cors())
+app.use(cors({ origin: origins, allowedHeaders: ['Content-Type', 'Authorization'], credentials: true }))
 app.use(cookieParser());
 
 require("./config/mongoose.config"); // start database connection here

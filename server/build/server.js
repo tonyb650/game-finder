@@ -13,14 +13,20 @@ const cors_1 = __importDefault(require("cors"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const notification_routes_1 = __importDefault(require("./routes/notification.routes"));
 dotenv_1.default.config(); // loads any environmental variables that we have
+const origins = [
+    'http://localhost:5173',
+    'https://game-finder-front-end.onrender.com/',
+    'http://game-finder-front-end.onrender.com/',
+    'https://gamefinder.pro/',
+    'http://gamefinder.pro/',
+    'https://www.gamefinder.pro/',
+    'http://www.gamefinder.pro/'
+];
 const app = (0, express_1.default)();
 const port = 8000; // Express port
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true })); // has to do with bodyParser
-// app.use(cors({credentials: true, origin: 'http://localhost:5173'}));
-//app.use(cors({credentials: true, allowedHeaders: ['Content-Type', 'Authorization'], origin: ['https://game-finder-yme6.onrender.com', 'http://game-finder-yme6.onrender.com', 'http://localhost:5173' ]}));
-app.use((0, cors_1.default)({ origin: ['http://localhost:5173', 'https://game-finder-front-end.onrender.com/', 'http://game-finder-front-end.onrender.com/', 'https://gamefinder.pro/', 'http://gamefinder.pro/'], allowedHeaders: ['Content-Type', 'Authorization'], credentials: true }));
-// app.use(cors())
+app.use((0, cors_1.default)({ origin: origins, allowedHeaders: ['Content-Type', 'Authorization'], credentials: true }));
 app.use((0, cookie_parser_1.default)());
 require("./config/mongoose.config"); // start database connection here
 /** Healthcheck */
