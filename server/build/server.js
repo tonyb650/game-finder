@@ -19,7 +19,7 @@ app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true })); // has to do with bodyParser
 // app.use(cors({credentials: true, origin: 'http://localhost:5173'}));
 //app.use(cors({credentials: true, allowedHeaders: ['Content-Type', 'Authorization'], origin: ['https://game-finder-yme6.onrender.com', 'http://game-finder-yme6.onrender.com', 'http://localhost:5173' ]}));
-app.use((0, cors_1.default)({ origin: ['http://localhost:5173', 'https://game-finder-front-end.onrender.com/', 'http://game-finder-front-end.onrender.com/', 'https://gamefinder.pro/', 'http://gamefinder.pro/'], credentials: true }));
+app.use((0, cors_1.default)({ origin: ['http://localhost:5173', 'https://game-finder-front-end.onrender.com/', 'http://game-finder-front-end.onrender.com/', 'https://gamefinder.pro/', 'http://gamefinder.pro/'], allowedHeaders: ['Content-Type', 'Authorization'], credentials: true }));
 // app.use(cors())
 app.use((0, cookie_parser_1.default)());
 require("./config/mongoose.config"); // start database connection here
