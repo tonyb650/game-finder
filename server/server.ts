@@ -12,12 +12,12 @@ dotenv.config() // loads any environmental variables that we have
 
 const origins = [
   'http://localhost:5173', 
-  'https://game-finder-front-end.onrender.com/', 
-  'http://game-finder-front-end.onrender.com/', 
-  'https://gamefinder.pro/', 
-  'http://gamefinder.pro/',
-  'https://www.gamefinder.pro/', 
-  'http://www.gamefinder.pro/'
+  'https://game-finder-front-end.onrender.com', 
+  'http://game-finder-front-end.onrender.com', 
+  'https://gamefinder.pro', 
+  'http://gamefinder.pro',
+  'https://www.gamefinder.pro', 
+  'http://www.gamefinder.pro'
 ]
 
 const app = express()
