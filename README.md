@@ -1,4 +1,4 @@
-# Pickup Sportz / aka Game Finder
+# Pickup Sportz / aka Game Finder 🏀
 
 An application designed to help users locate and sign up to participate in "pickup" sports or activities that need additional participants.
 
