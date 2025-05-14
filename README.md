@@ -110,7 +110,7 @@ Node and NPM are required.
    ```
 5. Create `client/.env` file and populate with environment OpenWeatherMap API key
     ```json
-    VITE_REACT_APP_API_KEY="6be0d63dd8d16be560da49a9c0a723ac"
+    VITE_REACT_APP_API_KEY="your_open_weather_map_api_key"
     ```
 6. Update the DB connection string in `server/config/mongoDB.config.ts` to reflect the MongoDB you are connecting to.
 7. Change git remote url to avoid accidental pushes to base project
