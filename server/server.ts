@@ -21,7 +21,7 @@ const origins = [
 ]
 
 const app = express()
-const port: number = 8000 // Express port
+const port: number = Number(process.env.SERVER_PORT) || 8000 // Express port
 
 app.use(express.json());
 app.use(express.urlencoded({extended:true})); // has to do with bodyParser

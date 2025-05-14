@@ -112,7 +112,7 @@ const Dashboard = () => {
         
         <div>
         <div className="flex relative justify-center mb-4">
-          <h1 className="text-4xl text-white">Upcoming Events:</h1>
+          <h1 className="text-4xl text-white">Your Upcoming Events:</h1>
         </div>
         {/* upcoming events table */}
         <div className="flex relative overflow-x-auto shadow-md justify-center rounded-lg">
